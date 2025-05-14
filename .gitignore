@@ -1,14 +1,14 @@
 # History files
-.Rhistory
-.Rapp.history
-.Rproj
+*.Rhistory
+*.Rapp.history
+*.Rproj
 
 # Session Data files
-.RData
-.RDataTmp
+*.RData
+*.RDataTmp
 
 # User-specific files
-.Ruserdata
+*.Ruserdata
 .DS_Store
 
 # Example code in package build process
