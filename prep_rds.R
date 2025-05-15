@@ -1,5 +1,10 @@
 require(tidyverse)
 
+load("top20_bib.RData")
+load("words_by_journal_year.RData")
+load("top20_word_appear_by_year.RData")
+load("top20_word_topic_by_year.RData")
+
 words_each_year <- top20_bib |>
   group_by(year) |>
   summarise(all_words = sum(wordcount))
@@ -10,7 +15,7 @@ articles_each_year <- top20_bib |>
 
 word_data <- words_by_journal_year |>
   group_by(word) |>
-  filter(sum(wordcount) >= 2000) |>
+  filter(sum(wordcount) >= 500) |>
   ungroup() |>
   group_by(word, year) |>
   summarise(count = sum(wordcount), .groups = "drop") |>
@@ -59,5 +64,5 @@ word_list <- (word_data |>
                 group_by(word) |>
                 tally())$word
 
-saveRDS(word_data, "graph-app/word_data.rds")
-saveRDS(word_list, "graph-app/word_list.rds")
+saveRDS(word_data, "t20-graphs/word_data.rds")
+saveRDS(word_list, "t20-graphs/word_list.rds")
